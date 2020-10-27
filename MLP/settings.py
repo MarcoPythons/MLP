@@ -26,9 +26,9 @@ SECRET_KEY = '0j&&6j&$)*4wh^)9rhw1bllta8=f(ascy*o(m3-@c3a9-m-wy5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.2']
+ALLOWED_HOSTS = ['192.168.0.5']
 
-
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'MLP/templates/static'),] 
 # Application definition
 
 INSTALLED_APPS = [
@@ -57,7 +57,7 @@ ROOT_URLCONF = 'MLP.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(os.path.dirname(__file__),)],
+        'DIRS': [os.path.join(os.path.dirname(__file__),), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -82,7 +82,7 @@ DATABASES = {
         'NAME': 'mlp',
         'USER': 'mlp',
         'PASSWORD': '123',
-        'HOST': '192.168.0.2',
+        'HOST': '192.168.0.5',
         'PORT': '3306',
     }
 }

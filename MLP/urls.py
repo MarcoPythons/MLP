@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from registros import Rviews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('registro/', Rviews.registro, name = 'registro'),
+    path('User-Created/', Rviews.registrado, name='registrado'),
 ]
