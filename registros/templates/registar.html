@@ -14,14 +14,11 @@
 	
 </head>
 <body class="xbody-reg">
-    
-    {% include "HeaderNav.html" %}
-
     <section class="container xmt-70px">
         <div class="xregister-form">
             <h2>Crea tu Cuenta</h2>
 
-            <form action="/User-Created/" method="POST">{% csrf_token %}
+            <form action="/User-Created/" method="POST"> {% csrf_token %}
                 <label for="rut">RUT</label>
                 <input type="text" class="form-control" required oninput="checkRut(this)" id="rut" name="rut" placeholder="Ej: 12345678-k" required maxlength="10">
             
