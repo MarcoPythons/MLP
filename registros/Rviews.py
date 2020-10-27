@@ -17,12 +17,5 @@ def registro_completo(request):
 
     return(request, "registrar.html")
 
-def registro(request):
 
 
-    rut_desde_html =request.POST["rut"]
-
-    run_desde_bd=cliente.objects.filter(run__exact = rut_desde_html)
-    
-
-    return(request, "registrar.html")
