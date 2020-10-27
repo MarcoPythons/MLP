@@ -57,7 +57,7 @@ ROOT_URLCONF = 'MLP.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(os.path.dirname(__file__),), ],
+        'DIRS': [os.path.join(os.path.dirname(__file__),'O:/2 semestre antonio varas(heavy files)/Segundo semestre Antonio Varas/Arquitectura/MLP/MLP/registros/templates') , ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

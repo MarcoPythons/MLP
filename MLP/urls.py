@@ -20,5 +20,5 @@ from registros import Rviews
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('registro/', Rviews.registro, name = 'registro'),
-    path('User-Created/', Rviews.registrado, name='registrado'),
+    path('User-Created/', Rviews.registro_completo, name='registrado'),
 ]
