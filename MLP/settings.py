@@ -26,7 +26,12 @@ SECRET_KEY = '0j&&6j&$)*4wh^)9rhw1bllta8=f(ascy*o(m3-@c3a9-m-wy5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.5']
+ALLOWED_HOSTS = ['192.168.43.42']
+
+
+AUTH_USER_MODEL = "registros.usuario"
+LOGIN_REDIRECT_URL= '/home/' #donde se redirigira el sitio despues de hacer login
+LOGOUT_REDIRECT_URL = '/home/' #donde se redirigira el sitio despues de hacer logout
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'MLP/templates/static'),] 
 # Application definition
@@ -57,7 +62,7 @@ ROOT_URLCONF = 'MLP.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(os.path.dirname(__file__),'O:/2 semestre antonio varas(heavy files)/Segundo semestre Antonio Varas/Arquitectura/MLP/MLP/registros/templates') , ],
+        'DIRS': [os.path.join(os.path.dirname(__file__),'/home/oracle/Arquitectura/registros/templates') , ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -75,14 +80,14 @@ WSGI_APPLICATION = 'MLP.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
+  
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mlp',
         'USER': 'mlp',
         'PASSWORD': '123',
-        'HOST': '192.168.0.5',
+        'HOST': '192.168.43.42',
         'PORT': '3306',
     }
 }
@@ -125,3 +130,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#configuración para enviar emails
+EMAIL_BACKEND="django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST="smtp.gmail.com"
+EMAIL_USE_SSL = True
+EMAIL_PORT = 465
+EMAIL_HOST_USER = "tiendapazajera@gmail.com"
+EMAIL_HOST_PASSWORD = "Jetblackheart1." 
