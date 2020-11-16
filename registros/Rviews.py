@@ -1,20 +1,16 @@
-from django.shortcuts import render, redirect , HttpResponse
+from django.shortcuts import render, redirect, HttpResponse
 from registros.models import usuario
 from registros.forms import ClienteForm
-from django.contrib.auth import login , authenticate
-
-
-
-
+from django.contrib.auth import login, authenticate
 
 
 def registro(request):
 
     data = {
-        'form':ClienteForm
+        'form': ClienteForm
     }
-    
-    if request.method  == 'POST':
+
+    if request.method == 'POST':
         formulario = ClienteForm(request.POST)
         if formulario.is_valid:
             formulario.save()
@@ -26,12 +22,11 @@ def registro(request):
 
     return render(request, "registar.html", data)
 
+
 def registro_completo(request):
 
-
-    rut_desde_html =request.POST["rut"]
+    rut_desde_html = request.POST["rut"]
 
     # run_desde_bd=cliente.objects.filter(run__exact = rut_desde_html)
-    
 
     return render(request, "registro_completo.html")

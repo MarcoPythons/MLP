@@ -1,33 +1,35 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>TiendaPazajera</title>
-    <link rel="stylesheet" href="{% static '/css/headerNav.css' %}">    
+    <link rel="stylesheet" href="{% static '/css/headerNav.css' %}" />
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-</head>
-<header>
+  </head>
+  <header>
     <nav id="nav">
-        <div class="xlogo">
-            <a href="#" class="xhome-link">
-                <img src="{% static '/img/images.jpg' %}" alt="logo">
-            </a>
-           <h1 class = "hola">Muebleria Los Pinos</h1>
-        </div>
+      <div class="xlogo">
+        <a href="#" class="xhome-link">
+          <img src="{% static '/img/images.jpg' %}" alt="logo" />
+        </a>
+        <h1 class="hola">Muebleria Los Pinos</h1>
+      </div>
 
-        <div class="xbar" id="xbar">
-            <a href="{%url 'registro' %}"   method = "get" class="xbar-item">
-                <div class="xbar-box">Registrarme</div>
-            </a>
-            <a href="{%url 'registrado' %}" method= "get" class="xbar-item">
-                <div class="xbar-box">Iniciar Sesiòn</div>
-            </a>
-        </div>
+      <div class="xbar" id="xbar">
+        <a href="{%url 'registro' %}" method="get" class="xbar-item">
+          <div class="xbar-box">Registrarme</div>
+        </a>
+        <a href="{%url 'registrado' %}" method="get" class="xbar-item">
+          <div class="xbar-box">Iniciar Sesiòn</div>
+        </a>
+      </div>
 
-        <button type="button" id="xresponsive-menu"><span class="icon-menu"></span></button>
+      <button type="button" id="xresponsive-menu">
+        <span class="icon-menu"></span>
+      </button>
     </nav>
-</header>
+  </header>
 </html>
