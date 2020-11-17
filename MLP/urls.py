@@ -16,10 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from registros import Rviews
+from MLP import views
+from carro import Cviews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('registro/', Rviews.registro, name='registro'),
     path('User-Created/', Rviews.registro_completo, name='registrado'),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('home/',views.pag_principal, name ='pag_principal'), 
+    path('tienda/muebleria-los-pinos', Cviews.tienda , name = 'tienda'),
+    path('carro/muebleria-los-pinos', Cviews.carro , name = 'carro'),
+    path('checkout/muebleria-los-pinos', Cviews.checkout , name = 'checkout')
 ]
