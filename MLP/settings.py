@@ -26,7 +26,7 @@ SECRET_KEY = '0j&&6j&$)*4wh^)9rhw1bllta8=f(ascy*o(m3-@c3a9-m-wy5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.5']
+ALLOWED_HOSTS = ['192.168.56.1']
 
 
 AUTH_USER_MODEL = "registros.usuario"
@@ -63,8 +63,9 @@ ROOT_URLCONF = 'MLP.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(os.path.dirname(__file__), 'O:/2 semestre antonio varas(heavy files)/Segundo semestre Antonio Varas/Arquitectura/MLP/MLP/registros/templates'),(
-            'O:/2 semestre antonio varas(heavy files)/Segundo semestre Antonio Varas/Arquitectura/MLP/MLP/MLP/templates/Pages'), ('O:/2 semestre antonio varas(heavy files)/Segundo semestre Antonio Varas/Arquitectura/MLP/MLP/carro/templates') ],
+        'DIRS': [os.path.join(os.path.dirname(__file__), 'C:/Users/aleja/Desktop/Proyecto Activos/Arquitectura/registros/templates'),
+        ('C:/Users/aleja/Desktop/Proyecto Activos/Arquitectura/MLP/templates/Pages'), 
+        ('C:/Users/aleja/Desktop/Proyecto Activos/Arquitectura/carro/templates') ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -89,7 +90,7 @@ DATABASES = {
         'NAME': 'mlp',
         'USER': 'mlp',
         'PASSWORD': '123',
-        'HOST': '192.168.0.5',
+        'HOST': '192.168.56.1',
         'PORT': '3306',
     }
 }
@@ -132,6 +133,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
 # configuración para enviar emails
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
