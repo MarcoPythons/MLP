@@ -7,17 +7,15 @@ from django.contrib import admin
 
 class UsuarioManager(BaseUserManager): #con esto se puede crear usuarios personalizados
     
-    def create_user(self, email, username , run, nombre, apellido, fecha_nacimiento, password):   #asi creo un usuario normal
+    def create_user(self, email, username , nombre, apellido, password):   #asi creo un usuario normal
         if not email:
             raise ValueError('El usuario debe tener un correo electrónico!')
         
         usuario = self.model(
             username = username, 
             email = self.normalize_email(email) ,#normalize_email es un validador de email
-            run = run,
             nombre = nombre, 
             apellido = apellido,
-            fecha_nacimiento = fecha_nacimiento
         ) 
         usuario.set_password(password) # asi encriptamos la contraseña 
         usuario.save()
@@ -25,14 +23,12 @@ class UsuarioManager(BaseUserManager): #con esto se puede crear usuarios persona
 
         return usuario
 
-    def create_superuser(self, username,email,run, nombre, apellido, fecha_nacimiento, password): # asi se crea un usuario administrador
+    def create_superuser(self, username,email, nombre, apellido, password): # asi se crea un usuario administrador
         usuario = self.create_user(
             email,
-            run = run,
             username = username, 
             nombre = nombre, 
             apellido = apellido,
-            fecha_nacimiento = fecha_nacimiento,
             password = password
         )   
 
@@ -43,10 +39,8 @@ class UsuarioManager(BaseUserManager): #con esto se puede crear usuarios persona
 
 class usuario(AbstractBaseUser): # usuario personalizado
     username = models.CharField(unique=True, max_length=30)
-    run= models.CharField(max_length=30, null=False) # Asi se crean los atributos de tipo texto
     nombre= models.CharField(max_length=30, null=False) #asi se crean los atributos de tipo numerico
     apellido = models.CharField(max_length=30, null=False)
-    fecha_nacimiento = models.DateField(null=False, verbose_name ="Fecha de nacimiento")
     email = models.EmailField(null=False) #esto sirve para que se intruduscan emails validos
     is_active = models.BooleanField(default = True) #permisos de usuario normal
     usuario_administrador = models.BooleanField(default= False) #permisos de administrador
@@ -54,7 +48,7 @@ class usuario(AbstractBaseUser): # usuario personalizado
 
 
     USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['run', 'nombre', 'apellido', 'fecha_nacimiento', 'email'] 
+    REQUIRED_FIELDS = ['nombre', 'apellido', 'email'] 
 
     def __str__(self):
         return f'{self.username},{self.nombre}'
@@ -76,8 +70,7 @@ class usuario(AbstractBaseUser): # usuario personalizado
     
     class Meta:
         db_table = 'Usuarios' # para que la tabla se llame "Cliente" en la base de datos
-        ordering = ['run'] # para ordenar por run
-        #required_db_vendor = 'mysql' #esto es para dar a conocer con que base de datos trabaja
+
 
 
 

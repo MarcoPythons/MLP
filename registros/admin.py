@@ -4,7 +4,7 @@ from registros.models import usuario
 
 
 class ClienteAdmin(admin.ModelAdmin):
-    list_display=("nombre" , "apellido" , "run")
-    search_fields =("run",)
+    list_display=("nombre" , "apellido" )
+    search_fields =("nombre",)
 
 admin.site.register(usuario, ClienteAdmin)

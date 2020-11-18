@@ -26,6 +26,7 @@
 @import url(nice-select.css);
 @import url(baguetteBox.min.css);
 
+
 /*------------------------------------------------------------------
     SKELETON
 -------------------------------------------------------------------*/
@@ -609,16 +610,11 @@
 	 padding: 6px 25px;
 }
 
- nav.navbar.bootsnav ul.navbar-nav li.dropdown ul.dropdown-menu li a:hover{
-	 
- }
  nav.navbar.bootsnav li.dropdown ul.dropdown-menu{
      left: auto;
 }
 .custom-select-box .dropdown-item{
 	padding: 5px 10px;
-}
- .btn-cart{
 }
  .cart-list h6 a{
      font-size: 16px;
@@ -909,8 +905,7 @@
  .filter-button-group button.active{
      background: #000000;
 }
- .filter-button-group button{
-}
+
  .products-single {
      overflow: hidden;
      position: relative;
@@ -1380,8 +1375,6 @@
      padding-bottom: 20px;
 }
 
- .footer-link{
-}
  .footer-link h4{
      color: #ffffff;
      font-size: 16px;
@@ -1501,7 +1494,7 @@
 }
 /*------------------------------------------------------------------ All Pages -------------------------------------------------------------------*/
  .all-title-box{
-     background: url("../images/all-bg-title.jpg") no-repeat center center;
+     background-color: rgb(155, 255, 234);
      -webkit-background-size: cover;
      -moz-background-size: cover;
      -ms-background-size: cover;
@@ -2243,8 +2236,6 @@
  .service-icon i{
      font-size: 34px;
 }
- .my-account-page a:hover i{
-}
  .service-desc p{
      font-size: 16px;
 }
@@ -2545,8 +2536,7 @@
      color: #ffffff;
      border: none;
 }
- .share-bar{
-}
+
  .share-bar a {
      background: blue;
      color: #ffffff;
@@ -2554,10 +2544,6 @@
      display: inline-block;
      width: 34px;
      text-align: center;
-}
- .share-bar a {
-}
- .featured-products-box{
 }
  .featured-products-box .owl-nav{
      position: absolute;

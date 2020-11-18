@@ -27,5 +27,5 @@ urlpatterns = [
     path('home/',views.pag_principal, name ='pag_principal'), 
     path('tienda/muebleria-los-pinos', Cviews.tienda , name = 'tienda'),
     path('carro/muebleria-los-pinos', Cviews.carro , name = 'carro'),
-    path('checkout/muebleria-los-pinos', Cviews.checkout , name = 'checkout')
+    path('checkout/', Cviews.checkout , name = 'checkout')
 ]

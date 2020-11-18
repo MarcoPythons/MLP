@@ -32,7 +32,7 @@ class ClienteForm(forms.ModelForm):
 
     class Meta:
         model = usuario
-        fields = (  'username', 'run', 'nombre', 'apellido', 'fecha_nacimiento', 'email') #aca se pueden editar los tags html de los campos del modelo
+        fields = (  'username', 'nombre', 'apellido', 'email') #aca se pueden editar los tags html de los campos del modelo
         labels = {
             'username':'Nombre de usuario',
             'run':'Rut'
@@ -46,14 +46,6 @@ class ClienteForm(forms.ModelForm):
                 'name': 'username',
                 'placeholder': 'Ingresa un Nombre de usuario',
                 'required':'required'
-            }),
-            'run': forms.TextInput(
-            attrs = {
-                'class': 'form-control',
-                'required oninput': 'checkRut(this)',
-                'id': 'rut',
-                'placeholder': 'Ej: 12345678-k',
-                'required maxlength': '10'
             }),
             'nombre': forms.TextInput(
             attrs = {
@@ -72,17 +64,6 @@ class ClienteForm(forms.ModelForm):
                 'placeholder': 'Ingresa tu apellido',
                 'required':'required',
                 'required maxlength': '30'  
-                }),
-            'fecha_nacimiento': forms.DateInput(
-                attrs={
-                'type': 'date',
-                'class': 'form-control',
-                'id': 'fecNac',
-                'name': 'fecNac',
-                'required':'required',
-                'placeholder': 'Ejemplo: 1999-05-07',
-                'min': '1930-01-01',
-                'max': '2002-01-01'
                 }),
             'email': forms.EmailInput(
                 attrs= {
