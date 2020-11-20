@@ -657,7 +657,7 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background: #000000;
+	background: white;
 	border-radius: 100%;
 	-webkit-transform: scale(0);
 	transform: scale(0);
@@ -2081,7 +2081,7 @@
      background: blue;
 }
  .update-box input[type="submit"]{
-     background: #000000;
+     background: blue;
      border: medium none;
      border-radius: 0;
      -webkit-box-shadow: none;

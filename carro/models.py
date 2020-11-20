@@ -12,7 +12,7 @@ class producto(models.Model):
     precio = models.IntegerField(null=False)
     tipo = models.CharField(max_length=30, null=False)
     descripcion = models.CharField(max_length=400)
-    image= models.ImageField(null=False)
+    image= models.ImageField(null=False,upload_to='media')
 
     class Meta:
         db_table = 'producto'
@@ -35,10 +35,22 @@ class datos_envio_cliente(models.Model):
 class pedido(models.Model):
     subtotal = models.IntegerField(null=False)
     descuento = models.IntegerField(null=False)
-    cupon = models.IntegerField(null=False)
     costo_envio = models.IntegerField(null=False)
     total_compra = models.IntegerField(null=False)
     metodo_pago = models.CharField(null=False,max_length=70)
+    cantidad = models.IntegerField(null=False)
+    id_producto =models.ForeignKey(producto, on_delete=models.CASCADE)
+    id_datos_cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'pedido'
+
+
+
+
+class endeudamiento(models.Model):
+    cupo_endeudamiento=models.IntegerField(null=False)
+    id_usuario= models.OneToOneField(Cliente, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = 'Cupo_Endeudamiento'

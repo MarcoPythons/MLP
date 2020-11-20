@@ -1,4 +1,5 @@
 {% load static %}
+{% load  carro_tag %}
 <!DOCTYPE html>
 <html lang="en">
   {% include 'base.html' %}
@@ -61,54 +62,61 @@
                   </tr>
                 </thead>
                 <tbody>
+              {% if request.session.carro.items %}
+	              {% for key, value in request.session.carro.items %}
+
                   <tr>
                     <td class="thumbnail-img">
                       <a href="#">
                         <img
                           class="img-fluid"
-                          src="{% static 'img/escritorio1.jpg' %}"
+                          src="{{value.imagen}}"
                           alt=""
                         />
                       </a>
                     </td>
                     <td class="name-pr">
-                      <a href="#"> Escritorio melamina café </a>
+                      <a href="#"> {{value.nombre}} </a>
                     </td>
                     <td class="price-pr">
-                      <p>$ 80.0</p>
+                      <p>CLP {{value.precio}}</p>
                     </td>
                     <td class="quantity-box">
-                      <input
-                        type="number"
-                        size="4"
-                        value="1"
-                        min="0"
-                        step="1"
-                        class="c-input-text qty text"
-                      />
+                      {{value.cantidad}}
                     </td>
                     <td class="total-pr">
-                      <p>$ 80.0</p>
+                      <p>CLP {{ value.precio|multiplicar:value.cantidad}}</p>
                     </td>
                     <td class="remove-pr">
-                      <a href="#">
-                        <svg
-                          width="1em"
-                          height="1em"
-                          viewBox="0 0 16 16"
-                          class="bi bi-bag-x"
-                          fill="currentColor"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="M8 1a2.5 2.5 0 0 0-2.5 2.5V4h5v-.5A2.5 2.5 0 0 0 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5H2z"
-                          />
-                          <path
-                            fill-rule="evenodd"
-                            d="M6.146 8.146a.5.5 0 0 1 .708 0L8 9.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 10l1.147 1.146a.5.5 0 0 1-.708.708L8 10.707l-1.146 1.147a.5.5 0 0 1-.708-.708L7.293 10 6.146 8.854a.5.5 0 0 1 0-.708z"
-                          />
-                        </svg>
+                      <a href="{% url 'carro:remove_producto' value.producto_id %}" class="btn btn-default hvr-hover btn-cart" style="color: white;">
+                        eliminar producto/s del carro
+                      </a>
+                {% endfor %}
+
+              {% else %}
+              <strong > El carro esta vacio <a href="{% url 'tienda' %}">Ir a la tienda</a></strong>
+              <tr>
+                <td class="thumbnail-img">
+                  <a href="#">
+                    <img
+                      class="img-fluid"
+                      src=""
+                      alt=""
+                    />
+                  </a>
+                </td>
+                <td class="name-pr">
+                  <a href="#"> </a>
+                </td>
+                <td class="price-pr">
+                  <p></p>
+                </td>
+                <td class="total-pr">
+                  <p></p>
+                </td>
+                        
+              {% endif %}
+
                       </a>
                     </td>
                   </tr>
@@ -117,50 +125,23 @@
             </div>
           </div>
         </div>
-
-        <div class="row my-5">
-          <div class="col-lg-6 col-sm-6">
-            <div class="coupon-box">
-              <div class="input-group input-group-sm">
-                <input
-                  class="form-control"
-                  placeholder="Enter your coupon code"
-                  aria-label="Coupon code"
-                  type="text"
-                />
-                <div class="input-group-append">
-                  <button class="btn btn-theme" type="button">
-                    Aplicar cupón
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6 col-sm-6">
-            <div class="update-box">
-              <input value="Calcular total" type="submit" />
-            </div>
-          </div>
-        </div>
-
+        
         <div class="row my-5">
           <div class="col-lg-8 col-sm-12"></div>
+          {% if request.session.carro.items %}
+	        {% for key, value in request.session.carro.items %}
           <div class="col-lg-4 col-sm-12">
             <div class="order-box">
               <h3>Detalle de la orden</h3>
               <div class="d-flex">
                 <h4>Sub Total</h4>
-                <div class="ml-auto font-weight-bold">$ 130</div>
+                <div class="ml-auto font-weight-bold">CLP {{value.precio|multiplicar:value.cantidad}}</div>
               </div>
               <div class="d-flex">
-                <h4>Descuento</h4>
-                <div class="ml-auto font-weight-bold">$ 40</div>
+                <h4>Cupo de endeudamiento</h4>
+                <div class="ml-auto font-weight-bold">CLP 0</div>
               </div>
               <hr class="my-1" />
-              <div class="d-flex">
-                <h4>Cupón de descuento</h4>
-                <div class="ml-auto font-weight-bold">$ 10</div>
-              </div>
               <div class="d-flex">
                 <h4>Costos de envio</h4>
                 <div class="ml-auto font-weight-bold">Gratis</div>
@@ -168,14 +149,19 @@
               <hr />
               <div class="d-flex gr-total">
                 <h5>Total de la compra</h5>
-                <div class="ml-auto h5">$ 388</div>
+                <div class="ml-auto h5">CLP {{value.precio|multiplicar:value.cantidad}}</div>
               </div>
               <hr />
             </div>
           </div>
+          {% endfor %}
+
+          {% endif %}
+
+
           <div class="col-12 d-flex shopping-box">
             <a href="{% url 'checkout' %}" class="ml-auto btn hvr-hover"
-              >Checkout</a
+              >Pagar</a
             >
           </div>
         </div>

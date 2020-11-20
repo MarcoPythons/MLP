@@ -5,6 +5,7 @@ from django.contrib import admin
 
 
 
+
 class UsuarioManager(BaseUserManager): #con esto se puede crear usuarios personalizados
     
     def create_user(self, email, username , nombre, apellido, password):   #asi creo un usuario normal

@@ -49,7 +49,7 @@
                   <br />
                     de los muebles en todo Chile.
                 </p>
-                <p><a class="btn hvr-hover" href="#">Shop New</a></p>
+                <p><a class="btn hvr-hover" href="#">Ir a la tienda</a></p>
               </div>
             </div>
           </div>
@@ -67,7 +67,7 @@
                   <br />
                     de los muebles en todo Chile.
                 </p>
-                <p><a class="btn hvr-hover" href="#">Shop New</a></p>
+                <p><a class="btn hvr-hover" href="#">Ir a la tienda</a></p>
               </div>
             </div>
           </div>
@@ -153,209 +153,99 @@
         </div>
 
         <div class="row special-list">
-          <div class="col-lg-3 col-md-6 special-grid best-seller">
-            <div class="products-single fix">
-              <div class="box-img-hover">
-                <div class="type-lb">
-                  <p class="sale">Oferta</p>
-                </div>
-                <img
-                  src="{% static 'img/Mueble_cocina_bisel.jpg' %}"
-                  class="img-fluid"
-                  alt="Image"
-                />
-                <div class="mask-icon">
-                  <ul>
-                    <li>
-                      <a
-                        href="#"
-                        data-toggle="tooltip"
-                        data-placement="right"
-                        title="View"
-                        ><i class="fas fa-eye"></i
-                      ></a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        data-toggle="tooltip"
-                        data-placement="right"
-                        title="Compare"
-                        ><i class="fas fa-sync-alt"></i
-                      ></a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        data-toggle="tooltip"
-                        data-placement="right"
-                        title="Add to Wishlist"
-                        ><i class="far fa-heart"></i
-                      ></a>
-                    </li>
-                  </ul>
-                  <a class="cart" href="#">Añadir al carro</a>
-                </div>
-              </div>
-              <div class="why-text">
-                <h4>Mueble de cocina Bisel</h4>
-                <h5>CLP 300,000 - ̶4̶0̶0̶,̶0̶0̶0̶</h5>
-              </div>
-            </div>
-          </div>
-
+        {% for mueble in productos %}
+          {% if mueble.descripcion == "Mueble de cocina Bisel" %}
           <div class="col-lg-3 col-md-6 special-grid top-featured">
             <div class="products-single fix">
               <div class="box-img-hover">
-                <div class="type-lb">
-                  <p class="new">Nuevo</p>
-                </div>
                 <img
-                  src="{% static 'img/mueble_lavaplatos.jpg' %}"
+                  src="{{mueble.image.url}}"
                   class="img-fluid"
                   alt="Image"
                 />
                 <div class="mask-icon">
-                  <ul>
-                    <li>
-                      <a
-                        href="#"
-                        data-toggle="tooltip"
-                        data-placement="right"
-                        title="View"
-                        ><i class="fas fa-eye"></i
-                      ></a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        data-toggle="tooltip"
-                        data-placement="right"
-                        title="Compare"
-                        ><i class="fas fa-sync-alt"></i
-                      ></a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        data-toggle="tooltip"
-                        data-placement="right"
-                        title="Add to Wishlist"
-                        ><i class="far fa-heart"></i
-                      ></a>
-                    </li>
-                  </ul>
-                  <a class="cart" href="#">Añadir al carro</a>
+                  <a class="cart" href="{% url 'carro:add_producto' mueble.id %}">Añadir al carro</a>
                 </div>
               </div>
               <div class="why-text">
-                <h4>Mueble lavaplatos blanco</h4>
-                <h5>CLP 70,000</h5>
+                <h4>{{mueble.descripcion}}</h4>
+                <h5>CLP {{mueble.precio}}</h5>
               </div>
             </div>
           </div>
+          {% endif %}
+        {% endfor %} 
 
-          <div class="col-lg-3 col-md-6 special-grid top-featured">
-            <div class="products-single fix">
-              <div class="box-img-hover">
-                <div class="type-lb">
-                  <p class="sale">Oferta</p>
-                </div>
-                <img
-                  src="{% static 'img/escritorio1.jpg' %}"
-                  class="img-fluid"
-                  alt="Image"
-                />
-                <div class="mask-icon">
-                  <ul>
-                    <li>
-                      <a
-                        href="#"
-                        data-toggle="tooltip"
-                        data-placement="right"
-                        title="View"
-                        ><i class="fas fa-eye"></i
-                      ></a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        data-toggle="tooltip"
-                        data-placement="right"
-                        title="Compare"
-                        ><i class="fas fa-sync-alt"></i
-                      ></a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        data-toggle="tooltip"
-                        data-placement="right"
-                        title="Add to Wishlist"
-                        ><i class="far fa-heart"></i
-                      ></a>
-                    </li>
-                  </ul>
-                  <a class="cart" href="#">Añadir al carro</a>
-                </div>
-              </div>
-              <div class="why-text">
-                <h4>Escritorio melamina café</h4>
-                <h5>CLP 100,000 -  ̶2̶0̶0̶,̶0̶0̶0̶</h5>
+        {% for mueble in productos %}
+        {% if mueble.descripcion == "Escritorio melamina café" %}
+        <div class="col-lg-3 col-md-6 special-grid best-seller">
+          <div class="products-single fix">
+            <div class="box-img-hover">
+              <img
+                src="{{mueble.image.url}}"
+                class="img-fluid"
+                alt="Image"
+              />
+              <div class="mask-icon">
+                <a class="cart" href="{% url 'carro:add_producto' mueble.id %}">Añadir al carro</a>
               </div>
             </div>
+            <div class="why-text">
+              <h4>{{mueble.descripcion}}</h4>
+              <h5>CLP {{mueble.precio}}</h5>
+            </div>
           </div>
+        </div>
+        {% endif %}
+      {% endfor %} 
 
-          <div class="col-lg-3 col-md-6 special-grid best-seller">
-            <div class="products-single fix">
-              <div class="box-img-hover">
-                <div class="type-lb">
-                  <p class="sale">Oferta</p>
-                </div>
-                <img
-                  src="{% static 'img/mesa_vancouver.jpg' %}"
-                  class="img-fluid"
-                  alt="Image"
-                />
-                <div class="mask-icon">
-                  <ul>
-                    <li>
-                      <a
-                        href="#"
-                        data-toggle="tooltip"
-                        data-placement="right"
-                        title="View"
-                        ><i class="fas fa-eye"></i
-                      ></a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        data-toggle="tooltip"
-                        data-placement="right"
-                        title="Compare"
-                        ><i class="fas fa-sync-alt"></i
-                      ></a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        data-toggle="tooltip"
-                        data-placement="right"
-                        title="Add to Wishlist"
-                        ><i class="far fa-heart"></i
-                      ></a>
-                    </li>
-                  </ul>
-                  <a class="cart" href="#">Añadir al carro</a>
-                </div>
-              </div>
-              <div class="why-text">
-                <h4>Mesa vancouver café</h4>
-                <h5>CLP 80,000 - 1̶0̶0̶,̶0̶0̶0̶</h5>
-              </div>
+      {% for mueble in productos %}
+      {% if mueble.descripcion == "Escritorio Nash" %}
+      <div class="col-lg-3 col-md-6 special-grid top-featured">
+        <div class="products-single fix">
+          <div class="box-img-hover">
+            <img
+              src="{{mueble.image.url}}"
+              class="img-fluid"
+              alt="Image"
+            />
+            <div class="mask-icon">
+              
+              <a class="cart" href="{% url 'carro:add_producto' mueble.id %}">Añadir al carro</a>
             </div>
+
           </div>
+          <div class="why-text">
+            <h4>{{mueble.descripcion}}</h4>
+            <h5>CLP {{mueble.precio}}</h5>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    {% endfor %} 
+
+    {% for mueble in productos %}
+    {% if mueble.descripcion == "Rack TV horizon" %}
+    <div class="col-lg-3 col-md-6 special-grid best-seller">
+      <div class="products-single fix">
+        <div class="box-img-hover">
+          <img
+            src="{{mueble.image.url}}"
+            class="img-fluid"
+            alt="Image"
+          />
+          <div class="mask-icon">
+            <a class="cart" href="{% url 'carro:add_producto' mueble.id %}">Añadir al carro</a>
+          </div>
+        </div>
+        <div class="why-text">
+          <h4>{{mueble.descripcion}}</h4>
+          <h5>CLP {{mueble.precio}}</h5>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  {% endfor %} 
         </div>
       </div>
     </div>

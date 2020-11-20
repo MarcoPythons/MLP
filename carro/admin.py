@@ -1,3 +1,4 @@
+from carro.models import producto
 from django.contrib import admin
 
-# Register your models here.
+admin.site.register(producto)

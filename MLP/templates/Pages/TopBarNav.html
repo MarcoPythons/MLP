@@ -7,9 +7,19 @@
         </div>
         <div class="our-link">
           <ul>
+            {% if user.is_authenticated %}
+              <li>
+                <a>{{user.username}}<i></i> </a>
+              </li>
+              <li>
+                <a href="{%url 'logout' %}"><i></i> salir</a>
+              </li>
+            {% else %}
             <li>
-              <a href="#"><i></i> Mi Cuenta</a>
+              <a href="{%url 'login' %}"><i></i> Mi Cuenta</a>
             </li>
+            {% endif %}
+            
             <li>
               <a href="#"><i></i> Contactanos</a>
             </li>

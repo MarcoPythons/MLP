@@ -18,14 +18,18 @@ from django.urls import path, include
 from registros import Rviews
 from MLP import views
 from carro import Cviews
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('registro/', Rviews.registro, name='registro'),
-    path('User-Created/', Rviews.registro_completo, name='registrado'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('home/',views.pag_principal, name ='pag_principal'), 
     path('tienda/muebleria-los-pinos', Cviews.tienda , name = 'tienda'),
-    path('carro/muebleria-los-pinos', Cviews.carro , name = 'carro'),
-    path('checkout/', Cviews.checkout , name = 'checkout')
+    path('carrito1/muebleria-los-pinos', Cviews.carrito1 , name = 'carrito1'),
+    path('checkout/', Cviews.checkout , name = 'checkout'),
+    path('carro/', include('carro.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
