@@ -26,7 +26,7 @@ SECRET_KEY = '0j&&6j&$)*4wh^)9rhw1bllta8=f(ascy*o(m3-@c3a9-m-wy5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.5']
+ALLOWED_HOSTS = []
 
 
 AUTH_USER_MODEL = "registros.usuario"
@@ -40,12 +40,21 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'MLP/templates/static'), ]
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    #login with google
+    'django.contrib.sites',
+
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'carro',
     'registros',
+    #login with google apps
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'pwa',
 ]
 
 MIDDLEWARE = [
@@ -89,7 +98,7 @@ DATABASES = {
         'NAME': 'mlp',
         'USER': 'mlp',
         'PASSWORD': '123',
-        'HOST': '192.168.0.5',
+        'HOST': 'localhost',
         'PORT': '3306',
     }
 }
@@ -142,3 +151,30 @@ EMAIL_USE_SSL = True
 EMAIL_PORT = 465
 EMAIL_HOST_USER = "tiendapazajera@gmail.com"
 EMAIL_HOST_PASSWORD = "Jetblackheart1."
+
+
+#django all auth settings
+
+AUTHENTICATION_BACKENDS = (
+    # needed to login by username in Django admin, regardless of 'allauth'
+    'django.contrib.auth.backends.ModelBackend',
+    #allauth specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+
+SITE_ID = 1
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
+
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'serviceworker.js')

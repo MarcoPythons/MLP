@@ -71,6 +71,7 @@
                                             <div class="products-single fix">
                                                 <div class="box-img-hover">
                                                     <img src="{{p.image.url}}" class="img-fluid" alt="Image">
+                                                    <li>stock: {{p.stock}}</li>
                                                     <div class="mask-icon">
                                                         <a class="cart" href="{% url 'carro:add_producto' p.id %}">Añadir al carro</a>
                                                     </div>

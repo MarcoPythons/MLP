@@ -13,6 +13,7 @@ class producto(models.Model):
     tipo = models.CharField(max_length=30, null=False)
     descripcion = models.CharField(max_length=400)
     image= models.ImageField(null=False,upload_to='media')
+    stock = models.IntegerField(null=False, default=0)
 
     class Meta:
         db_table = 'producto'

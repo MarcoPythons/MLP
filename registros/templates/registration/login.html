@@ -1,6 +1,8 @@
 {% load static %}
 {% include 'base.html' %}
 {% include 'header.html' %}
+{% load socialaccount %}
+{% providers_media_js %}
 <div class="col-sm-6 col-lg-6 mb-3">
     <div class="title-left">
         <h3>Account Login</h3>
@@ -11,6 +13,7 @@
         </div>
         <button type="submit" class="btn hvr-hover">Login</button>
         <strong>no se encuentra registrado?<a href = "{% url 'registro' %}">Has click aqui para registrar</a>
+        <a href="{% provider_login_url 'google' %}"><img src = "{% static '/img/google.png' %}" ></a>
         
     </form>
 </div>

@@ -31,5 +31,8 @@ urlpatterns = [
     path('checkout/', Cviews.checkout , name = 'checkout'),
     path('carro/', include('carro.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/',include('allauth.urls')),
+    path('', include('pwa.urls')),
+
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

@@ -70,15 +70,44 @@
               </div>
             </div>
             <div class="col-lg-4 col-md-12 col-sm-12">
-              <div class="footer-link">
-                <h4>Information</h4>
-                <ul>
-                  <li><a href="#">Sobre nosotros</a></li>
 
-                </ul>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-12 col-sm-12">
+    <!-- Dentro de estas lineas va el google maps -->
+
+    <div class="footer-link">
+      <h4>Information</h4>
+      <ul>
+        <li><a href="#">Sobrenosotros</a></li>
+      </ul>
+        <div id="map"></div>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+        <script defer
+          
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbv5qI_lKPX3pOQY2y9h9urRhoA2f9SMM&callback=initMap">
+          
+        </script>                  
+        <script>
+          let map;              
+          function initMap() {
+              var coord = { lat: -33.4428779, lng: -70.6538932 };
+              var map = new google.maps.Map(document.getElementById("map"), {
+              zoom: 15,
+              center: coord
+            });
+            var marker = new google.maps.Marker({
+              position: coord, 
+              map: map
+            })
+          }
+        </script>
+      </div>
+  </div>
+  <div class="col-lg-4 col-md-12 col-sm-12">
+   
+
+    <!-- Dentro de estas lineas va el google maps -->
+
+
+
               <div class="footer-link-contact">
                 <h4>Contactanos!</h4>
                 <ul>
@@ -138,3 +167,5 @@
     <script src="{% static 'js/form-validator.min.js' %}"></script>
     <script src="{% static 'js/contact-form-script.js' %}"></script>
     <script src="{% static 'js/custom.js' %}"></script>
+
+

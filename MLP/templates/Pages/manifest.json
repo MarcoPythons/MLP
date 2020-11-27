@@ -1,0 +1,18 @@
+{
+    "short_name": "MLP",
+    "name": "Mueblería Los Pinos",
+    "description": "Paguina para comprar muebles",
+    "icons": [{
+            "src": "../static/img/icono2.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        }
+
+    ],
+    "start_url": "/home/",
+    "background_color": "#9BFFEA",
+    "display": "standalone",
+    "scope": "/home/",
+    "theme_color": "#9bffa0"
+
+}
