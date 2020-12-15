@@ -22,19 +22,19 @@ self.addEventListener("install", function (event) {
   );
 });
 
-self.addEventListener("fetch", function (event) {
+self.addEventListener("fetch", function (event) {  
   /* peticion */ event.respondWith(
-      fetch(event.request)
-      .then(function(result){
-        return caches.open(CACHE_NAME)
+      fetch(event.request) /* intercepcion de la peticion*/
+      .then(function(result){ 
+        return caches.open(CACHE_NAME) /* aca se abre el cashe*/
         .then(function(c){
-            c.put(event.request.url, result.clone())
-            return result;
+            c.put(event.request.url, result.clone()) /* aca se ponen todo lo que se guardo en el cache y hacemos una copia para evitar problemas*/
+            return result; /* y aca retornamoos todo*/
         })
 
         })
-        .catch(function(e){
-            return caches.match(event.request)
+        .catch(function(e){ /* y si falla la conexion*/
+            return caches.match(event.request) /* retornamos todo lo que este en el cache cache*/
 
         })
       

@@ -9,7 +9,7 @@
           <ul>
             {% if user.is_authenticated %}
               <li>
-                <a>{{user.username}} {{given_name}}<i></i> </a>
+                <a>{{user.username}}<i></i> </a>
               </li>
               <li>
                 <a href="{%url 'logout' %}"><i></i> salir</a>
